@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOB Hair Helsinki - Revolutionary Hair Salon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-primary:    #1A1A1A;
+            --color-secondary:  #E0E0E0;
+            --color-background: #FFFFFF;
+            --color-text:       #333333;
+            --color-accent:     #B58B5E;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--color-primary);
+        }
+
+        .text-primary { color: var(--color-primary) !important; }
+        .text-secondary { color: var(--color-secondary) !important; }
+        .text-accent { color: var(--color-accent) !important; }
+        .bg-primary { background-color: var(--color-primary) !important; }
+        .bg-secondary { background-color: var(--color-secondary) !important; }
+        .bg-accent { background-color: var(--color-accent) !important; }
+
+        .sticky-pin {
+            position: sticky;
+            top: 0;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .eyebrow {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .cta-btn {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--color-primary);
+            background-color: transparent;
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: inline-block;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: var(--color-primary);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-btn:hover::before {
+            width: 100%;
+        }
+
+        .cta-btn:hover {
+            color: var(--color-background);
+        }
+
+        .split-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            md:grid-cols-2;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .split-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .split-image-container img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .split-text-container {
+            padding: 2rem;
+        }
+
+        .split-text-container h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .split-text-container p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.7;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            border: 1px solid var(--color-secondary);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 26, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-background);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            border: 1px solid var(--color-secondary);
+            padding: 1rem;
+            width: 100%;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .horizontal-wrapper {
+            overflow: visible !important;
+            width: 100%;
+            position: relative;
+        }
+
+        .h-track {
+            display: flex;
+            flex-direction: column; /* Default for mobile */
+        }
+
+        @media (min-width: 768px) {
+            .h-track {
+                flex-direction: row;
+            }
+        }
+
+        .story-panel {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-panel-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        .story-panel-content h2 {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+        }
+
+        .story-panel-content p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .mask-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mask-reveal img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .parallax-section {
+            position: relative;
+            overflow: hidden;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150%; /* To allow for parallax movement */
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            color: var(--color-background);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .parallax-content h2 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .parallax-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.6;
+        }
+
+        .reveal-text {
+            font-size: clamp(2rem, 6vw, 4rem);
+            line-height: 1.2;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .reveal-text .line {
+            display: inline-block;
+        }
+
+        nav {
+            background-color: var(--color-background);
+            border-bottom: 1px solid var(--color-secondary);
+            padding: 1.5rem 0;
+            z-index: 100;
+        }
+
+        nav ul li a {
+            color: var(--color-primary);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-accent);
+        }
+
+        #menu-toggle {
+            font-size: 2rem;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+
+        #mobile-menu {
+            background-color: var(--color-background);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+        }
+
+        #mobile-menu a {
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            padding: 4rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="w-full sticky top-0 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">BOB Hair Helsinki</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="work.html">Work</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden">
+                ☰
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col items-center justify-center" style="transform: translateY(-100%);">
+        <button id="close-menu" class="absolute top-6 right-6 text-3xl text-primary">&times;</button>
+        <a href="index.html" class="py-4">Home</a>
+        <a href="about.html" class="py-4">About</a>
+        <a href="work.html" class="py-4">Work</a>
+        <a href="contact.html" class="py-4">Contact</a>
+    </div>
+
+    <header class="hero-section h-screen flex items-center justify-center text-center relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://source.unsplash.com/1920x1080/?hair,salon,editorial,bold" alt="Hero Image" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-primary opacity-30"></div>
+        </div>
+        <div class="relative z-10 px-6">
+            <h1 class="text-white text-center font-bold mb-4" style="font-size: clamp(3rem, 10vw, 7rem); letter-spacing: -0.05em;">
+                BOB Hair Helsinki
+            </h1>
+            <p class="text-white text-xl md:text-2xl opacity-90 mb-8">
+                Revolutionary Helsinki Hair Salon
+            </p>
+            <a href="varaa.timma.fi/bobhairhelsinki" class="cta-btn text-white border-white hover:bg-white hover:text-primary">Book Now</a>
+        </div>
+    </header>
+
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6 split-container">
+            <div class="split-image-container sticky-pin" style="height: 70vh;">
+                <img src="https://source.unsplash.com/720x1080/?modern,salon,interior,minimalist" alt="Salon Interior">
+            </div>
+            <div class="split-text-container">
+                <div class="reveal-text-container">
+                    <h2 class="section-title">A New Era of Hairdressing</h2>
+                </div>
+                <p class="reveal-text-container">
+                    BOB is more than a salon. It was born from the belief that a haircut can be a revolutionary act — just like the original bob cut of the 1920s challenged every social norm of its time. We are a space where hairdressing meets art, where clients come not just for a cut but for an experience. Our walls rotate local Helsinki artists. Our team collaborates with fashion designers and photographers. We believe beauty is culture, and culture shapes beauty. Vidal Sassoon said it best — if you don't look good, we don't look good. That philosophy drives everything we do.
+                </p>
+                <a href="about.html" class="cta-btn">Discover Our Vision</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center mb-16">Our Craft</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card section-to-reveal">
+                    <img src="https://source.unsplash.com/720x720/?haircut,professional,salon" alt="Modern Haircut" class="mb-4 w-full aspect-square object-cover">
+                    <h3 class="text-primary">Modern Tailored Haircuts</h3>
+                    <p>Precision cuts designed to complement your features and lifestyle.</p>
+                </div>
+                <div class="service-card section-to-reveal">
+                    <img src="https://source.unsplash.com/720x720/?bob,hair,style" alt="Signature Bob Cut" class="mb-4 w-full aspect-square object-cover">
+                    <h3 class="text-primary">Signature Bob Cuts</h3>
+                    <p>Iconic and contemporary interpretations of the timeless bob.</p>
+                </div>
+                <div class="service-card section-to-reveal">
+                    <img src="https://source.unsplash.com/720x720/?hair,coloring,balayage" alt="Hair Coloring" class="mb-4 w-full aspect-square object-cover">
+                    <h3 class="text-primary">Hair Coloring & Balayage</h3>
+                    <p>Vibrant, natural-looking color and expert balayage techniques.</p>
+                </div>
+                <div class="service-card section-to-reveal">
+                    <img src="https://source.unsplash.com/720x720/?keratin,treatment,hair" alt="Keratin Treatment" class="mb-4 w-full aspect-square object-cover">
+                    <h3 class="text-primary">Keratin Treatments</h3>
+                    <p>Smooth, frizz-free hair with long-lasting results.</p>
+                </div>
+                <div class="service-card section-to-reveal">
+                    <img src="https://source.unsplash.com/720x720/?makeup,session,editorial" alt="Makeup Session" class="mb-4 w-full aspect-square object-cover">
+                    <h3 class="text-primary">Makeup Sessions</h3>
+                    <p>Professional makeup artistry for any occasion.</p>
+                </div>
+                <div class="service-card section-to-reveal">
+                    <img src="https://source.unsplash.com/720x720/?bridal,hair,styling" alt="Bridal Styling" class="mb-4 w-full aspect-square object-cover">
+                    <h3 class="text-primary">Bridal Styling</h3>
+                    <p>Exquisite hair and makeup for your special day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center mb-16">Our Gallery</h2>
+            <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item aspect-square section-to-reveal">
+                    <img src="https://source.unsplash.com/400x400/?hairstylist,editorial,portrait" alt="Gallery Image 1">
+                    <div class="overlay">BOB</div>
+                </div>
+                <div class="gallery-item aspect-square section-to-reveal">
+                    <img src="https://source.unsplash.com/400x400/?fashion,hair,styling" alt="Gallery Image 2">
+                    <div class="overlay">STYLE</div>
+                </div>
+                <div class="gallery-item aspect-square section-to-reveal">
+                    <img src="https://source.unsplash.com/400x400/?art,gallery,helsinki" alt="Gallery Image 3">
+                    <div class="overlay">ART</div>
+                </div>
+                <div class="gallery-item aspect-square section-to-reveal">
+                    <img src="https://source.unsplash.com/400x400/?design,interior,minimalist" alt="Gallery Image 4">
+                    <div class="overlay">DESIGN</div>
+                </div>
+                <div class="gallery-item aspect-square section-to-reveal">
+                    <img src="https://source.unsplash.com/400x400/?hair,makeup,editorial" alt="Gallery Image 5">
+                    <div class="overlay">BEAUTY</div>
+                </div>
+                <div class="gallery-item aspect-square section-to-reveal">
+                    <img src="https://source.unsplash.com/400x400/?modern,architecture,helsinki" alt="Gallery Image 6">
+                    <div class="overlay">INSPIRATION</div>
+                </div>
+                <div class="gallery-item aspect-square section-to-reveal">
+                    <img src="https://source.unsplash.com/400x400/?hairstylist,creative,portrait" alt="Gallery Image 7">
+                    <div class="overlay">BOB</div>
+                </div>
+                <div class="gallery-item aspect-square section-to-reveal">
+                    <img src="https://source.unsplash.com/400x400/?fashion,model,hair" alt="Gallery Image 8">
+                    <div class="overlay">VISION</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center mb-16">The BOB Difference</h2>
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <img src="https://source.unsplash.com/800x800/?vidal,sassoon,legacy" alt="Vidal Sassoon" class="w-full h-auto mask-reveal">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-primary text-3xl mb-4">Vidal Sassoon Partnership</h3>
+                    <p class="text-lg leading-relaxed">
+                        We are proud to be a Vidal Sassoon partner salon. This esteemed affiliation signifies our commitment to the highest standards of hairdressing, precision cutting, and innovative styling that have defined Vidal Sassoon's legendary approach to beauty. Our team continually refines their skills through exclusive training, ensuring that every client receives an unparalleled salon experience rooted in excellence and artistry.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center mb-16">Visit Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="contact-info">
+                    <p class="text-xl mb-4"><strong>BOB Hair Helsinki</strong></p>
+                    <p class="text-lg mb-4">Kamppi Helsinki</p>
+                    <p class="text-lg mb-4"><a href="mailto:bob@bobhairhelsinki.com">bob@bobhairhelsinki.com</a></p>
+                    <div class="flex space-x-4 text-2xl mb-8">
+                        <a href="https://www.instagram.com/bobhairhelsinki" target="_blank" aria-label="Instagram">
+                            <svg class="w-8 h-8 fill-current text-primary hover:text-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 0c-123.5 0-223.5 100.1-223.5 223.5 0 123.5 100.1 223.5 223.5 223.5 123.5 0 223.5-100.1 223.5-223.5 0-123.5-100.1-223.5-223.5-223.5zm-4.2 348.3c-1.7-37.9 6.2-77.9 27.8-103.5 21.6-25.6 50.4-40.2 81.5-40.2 31.1 0 59.9 14.6 81.5 40.2 21.6 25.6 29.5 65.6 27.8 103.5-1.7 37.9-6.2 77.9-27.8 103.5-21.6 25.6-50.4 40.2-81.5 40.2-31.1 0-59.9-14.6-81.5-40.2-21.6-25.6-29.5-65.6-27.8-103.5zm147.5-215.4c-17.5 0-31.8 14.3-31.8 31.8 0 17.5 14.3 31.8 31.8 31.8 17.5 0 31.8-14.3 31.8-31.8 0-17.5-14.3-31.8-31.8-31.8zm-187.8 0c-17.5 0-31.8 14.3-31.8 31.8 0 17.5 14.3 31.8 31.8 31.8 17.5 0 31.8-14.3 31.8-31.8 0-17.5-14.3-31.8-31.8-31.8z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-full">
+                    <form id="contact-form" action="https://formspree.io/f/xpzvjwqo" method="POST" class="space-y-4">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="cta-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-2xl font-bold mb-4 text-accent">BOB Hair Helsinki</h4>
+                    <p>Revolutionary Helsinki Hair Salon</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold mb-4 text-accent">Location</h4>
+                    <p>Kamppi Helsinki</p>
+                    <p>Urho Kekkosen katu 1, 00100 Helsinki</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold mb-4 text-accent">Connect</h4>
+                    <p><a href="mailto:bob@bobhairhelsinki.com">bob@bobhairhelsinki.com</a></p>
+                    <p><a href="https://www.instagram.com/bobhairhelsinki" target="_blank">@bobhairhelsinki</a></p>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-secondary border-opacity-30">
+                <p>&copy; 2023 BOB Hair Helsinki. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. FIRST LINE — ALWAYS
+        gsap.registerPlugin(ScrollTrigger);
+        // 2. Lenis smooth scroll
+        const lenis = new Lenis();
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        // Page Entrance Timeline
+        gsap.timeline({ defaults: { ease: "power3.out" } })
+            .from("nav", { y: -80, autoAlpha: 0, duration: 0.8 })
+            .from(".eyebrow, .label", { y: 30, autoAlpha: 0, duration: 0.6 }, "-=0.4")
+            .from(".subtitle, .subline, p.hero-sub", { y: 40, autoAlpha: 0, duration: 0.6 }, "-=0.4")
+            .from(".cta-btn", { y: 30, autoAlpha: 0, scale: 0.9, duration: 0.6 }, "-=0.3");
+
+        // Text Split Animation
+        const splitTarget = document.querySelector("h1, h2");
+        if (splitTarget) {
+            const split = new SplitType(splitTarget, { types: "chars, words, lines" });
+            gsap.from(split.chars, {
+                y: 100, autoAlpha: 0, stagger: 0.02, duration: 0.8, ease: "back.out(1.7)",
+                scrollTrigger: { trigger: splitTarget, start: "top 85%", once: true }
+            });
+        }
+
+        // ScrollTrigger.batch for service cards
+        ScrollTrigger.batch(".service-card", {
+            onEnter: (batch) => gsap.from(batch, {
+                opacity: 0, y: 60, scale: 0.95, stagger: 0.15, duration: 0.8, ease: "power3.out"
+            }),
+            once: true
+        });
+
+        // Clip-path section reveals
+        gsap.from(".section-to-reveal", {
+            clipPath: "inset(100% 0% 0% 0%)", duration: 1.2, ease: "power4.inOut",
+            scrollTrigger: { trigger: ".section-to-reveal", start: "top 80%", once: true }
+        });
+
+        // Magnetic CTA Buttons
+        document.querySelectorAll(".cta-btn").forEach(btn => {
+            if (!window.matchMedia('(hover: hover)').matches) return; // skip on touch
+            btn.addEventListener("mousemove", (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
+            });
+            btn.addEventListener("mouseleave", () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+            });
+        });
+
+        // Mandatory Scroll Velocity Skew
+        let skewProxy = { skewY: 0 };
+        let skewSetter = gsap.quickSetter("img, .skew-el", "skewY", "deg");
+        let clamp = gsap.utils.clamp(-6, 6);
+        ScrollTrigger.create({
+            onUpdate: (self) => {
+                let skew = clamp(self.getVelocity() / 300);
+                if (Math.abs(skew) > Math.abs(skewProxy.skewY)) {
+                    skewProxy.skewY = skew;
+                    gsap.to(skewProxy, {
+                        skewY: 0, duration: 0.8, ease: "power3", overwrite: true,
+                        onUpdate: () => skewSetter(skewProxy.skewY)
+                    });
+                }
+            }
+        });
+
+        // Pinned Storytelling Panels (Not used in this specific page structure, but kept for potential future expansion)
+        gsap.utils.toArray(".story-panel").forEach((panel) => {
+            ScrollTrigger.create({ trigger: panel, start: "top top", pin: true, pinSpacing: false });
+        });
+
+        // SVG Circle Mask Reveal (Not applicable here, using clip-path instead)
+
+        // Counter Stats (Not applicable here)
+
+        // Magnetic Images (Not used in this page)
+
+        // Parallax Depth Layers
+        gsap.utils.toArray(".parallax-section").forEach(section => {
+            gsap.to(section.querySelector(".parallax-bg"), {
+                yPercent: -25, ease: "none",
+                scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: true }
+            });
+        });
+
+        // Staggered Line Mask Reveal
+        gsap.utils.toArray(".reveal-text-container").forEach(el => {
+            const split = new SplitType(el, { types: "lines" });
+            split.lines.forEach(line => {
+                const wrap = document.createElement("div");
+                wrap.style.overflow = "hidden";
+                wrap.style.display = "inline-block"; // Ensure line wraps correctly
+                line.parentNode.insertBefore(wrap, line);
+                wrap.appendChild(line);
+            });
+            gsap.from(split.lines, {
+                y: "110%", duration: 0.9, stagger: 0.08, ease: "power4.out",
+                scrollTrigger: { trigger: el, start: "top 85%", once: true }
+            });
+        });
+
+
+        // Mobile Menu Toggle
+        let menuOpen = false;
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                menuOpen = !menuOpen;
+                gsap.to(mobileMenu, { yPercent: menuOpen ? 0 : -100, duration: 0.6, ease: "power4.inOut" });
+            });
+        }
+        if (closeMenu && mobileMenu) {
+            closeMenu.addEventListener('click', () => {
+                menuOpen = false;
+                gsap.to(mobileMenu, { yPercent: -100, duration: 0.6, ease: "power4.inOut" });
+            });
+        }
+
+        // Formspree Handling
+        const form = document.getElementById('contact-form');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+                try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (res.ok) {
+                        form.innerHTML = '<p class="success-msg text-center py-8 text-lg text-primary">Message sent! We will be in touch soon.</p>';
+                    } else {
+                        btn.textContent = 'Try Again';
+                        btn.disabled = false;
+                    }
+                } catch {
+                    btn.textContent = 'Try Again';
+                    btn.disabled = false;
+                }
+            });
+        }
+
+        // Horizontal Scroll (Disabled on Mobile)
+        if (window.innerWidth >= 768) {
+            gsap.to(".h-track", {
+                x: () => -(document.querySelector(".h-track").scrollWidth - window.innerWidth),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".horizontal-wrapper",
+                    start: "top top",
+                    end: () => "+=" + (document.querySelector(".h-track").scrollWidth - window.innerWidth),
+                    scrub: 1,
+                    pin: true,
+                    anticipatePin: 1
+                }
+            });
+        }
+    </script>
+</body>
+</html>
