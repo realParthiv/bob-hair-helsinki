@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion';
 import { Instagram, MapPin, Mail, ArrowUpRight } from 'lucide-react';
 
@@ -18,7 +19,7 @@ const MagneticButton = ({ children, href }: { children: React.ReactNode; href: s
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     x.set((e.clientX - rect.left - rect.width / 2) * 0.3);
     y.set((e.clientY - rect.top - rect.height / 2) * 0.3);
@@ -75,9 +76,9 @@ export default function Footer() {
               <ul className="space-y-4">
                 {footerLinks.map((link) => (
                   <li key={link}>
-                    <a href={`/${link}`} className="text-2xl hover:text-[#FF3366] transition-colors capitalize">
+                    <Link href={`/${link}`} className="text-2xl hover:text-[#FF3366] transition-colors capitalize">
                       {link}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

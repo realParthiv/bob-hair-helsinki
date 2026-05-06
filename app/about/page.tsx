@@ -25,7 +25,7 @@ const charVariants = {
 const MagneticButton = ({ children, href }: { children: React.ReactNode; href?: string }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     x.set((e.clientX - rect.left - rect.width / 2) * 0.3);
     y.set((e.clientY - rect.top - rect.height / 2) * 0.3);

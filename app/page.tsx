@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, useMotionValue, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowRight, Instagram, MapPin, Mail, Scissors } from 'lucide-react';
@@ -27,7 +28,7 @@ export default function Page() {
   const x = useMotionValue(0);
   const yPos = useMotionValue(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     x.set((e.clientX - rect.left - rect.width / 2) * 0.3);
     yPos.set((e.clientY - rect.top - rect.height / 2) * 0.3);
@@ -177,7 +178,7 @@ export default function Page() {
           <div className="mt-12 pt-8 border-t border-black/10 text-sm text-black/50 flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© {new Date().getFullYear()} BOB Hair Helsinki. Precision by Kristel Tamm and Saara Vuorela.</p>
             <div className="flex gap-6">
-              <a href="/privacy" className="hover:text-black">Privacy Policy</a>
+              <Link href="/privacy" className="hover:text-black">Privacy Policy</Link>
               <span>Vidal Sassoon Partner Salon</span>
             </div>
           </div>
