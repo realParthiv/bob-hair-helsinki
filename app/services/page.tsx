@@ -130,7 +130,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="relative h-[600px] overflow-hidden rounded-2xl shadow-2xl">
             <Image 
-              src="/images/about.png" 
+              src="/bob-hair-helsinki/images/about.png" 
               alt="Professional hairstylist studio" 
               fill 
               className="object-cover brightness-75 hover:scale-105 transition-transform duration-700"
