@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #000000;
+    --color-background: #F4F4F4;
+    --color-text: #1A1A1A;
+    --color-accent: #FF3366;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    /* Lenis handles smooth scrolling */
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    cursor: none;
+  }
+
+  a, button, [role="button"] {
+    cursor: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), serif;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #FF3366;
+    border-radius: 10px;
+  }
+}
+
+/* Lenis CSS */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+

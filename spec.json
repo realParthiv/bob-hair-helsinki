@@ -2,74 +2,86 @@
   "meta": {
     "site_name": "bob-hair-helsinki",
     "subject": "BOB Hair Helsinki",
-    "about_summary": "BOB is more than a salon. It was born from the belief that a haircut can be a revolutionary act — just like the original bob cut of the 1920s challenged every social norm of its time. We are a space where hairdressing meets art, where clients come not just for a cut but for an experience. Our walls rotate local Helsinki artists. Our team collaborates with fashion designers and photographers. We believe beauty is culture, and culture shapes beauty. Vidal Sassoon said it best — if you don't look good, we don't look good. That philosophy drives everything we do.",
+    "about_summary": "Cultural hub for art, design, and fashion",
     "email": "bob@bobhairhelsinki.com",
-    "location": "Kamppi Helsinki",
+    "location": "Kamppi, Helsinki, Finland",
     "phone": "",
-    "bookingUrl": "varaa.timma.fi/bobhairhelsinki"
+    "bookingUrl": "https://varaa.timma.fi/bobhairhelsinki"
   },
   "theme": {
-    "mood": "Sophisticated, artistic, modern, and slightly avant-garde, reflecting a premium salon experience with a strong connection to art and fashion.",
-    "primary_color": "#1A1A1A",
-    "font_display": "A bold, contemporary serif font (e.g., Playfair Display or Cormorant Garamond) for headings and the salon name.",
-    "font_body": "A clean, highly readable sans-serif font (e.g., Open Sans or Lato) for body text."
+    "mood": "Sophisticated, avant-garde, professional yet effortlessly cool",
+    "primary_color": "#000000",
+    "font_display": "High-contrast Didone (e.g., Bodoni or Playfair Display)",
+    "font_body": "Clean neo-grotesque sans-serif (e.g., Inter or Neue Haas Grotesk)"
   },
-  "siteType": "hair salon",
+  "siteType": "hair salon / art gallery hybrid",
   "extractedContent": {
     "businessName": "BOB Hair Helsinki",
-    "tagline": "revolutionary Helsinki hair salon",
+    "tagline": "Revolutionary Helsinki hair salon",
     "founders": "Kristel Tamm and Saara Vuorela",
-    "location": "Kamppi Helsinki",
+    "location": "Kamppi, Helsinki, Finland",
     "email": "bob@bobhairhelsinki.com",
     "phone": "",
-    "bookingUrl": "varaa.timma.fi/bobhairhelsinki",
+    "bookingUrl": "https://varaa.timma.fi/bobhairhelsinki",
     "socialHandles": {
       "instagram": "@bobhairhelsinki"
     },
     "services": [
-      "Modern tailored haircuts",
-      "Signature bob cuts",
-      "Hair coloring",
-      "Balayage",
-      "Highlights",
-      "Keratin treatments",
-      "Makeup sessions",
-      "Bridal styling"
+      "signature bob cuts",
+      "modern haircuts",
+      "makeup",
+      "balayage",
+      "keratin",
+      "bridal styling"
     ],
     "credentials": [
       "Vidal Sassoon partner salon"
     ],
-    "philosophy": "BOB is more than a salon. It was born from the belief that a haircut can be a revolutionary act — just like the original bob cut of the 1920s challenged every social norm of its time. We are a space where hairdressing meets art, where clients come not just for a cut but for an experience. Our walls rotate local Helsinki artists. Our team collaborates with fashion designers and photographers. We believe beauty is culture, and culture shapes beauty. Vidal Sassoon said it best — if you don't look good, we don't look good. That philosophy drives everything we do.",
-    "targetAudience": "",
-    "additionalDetails": "Pricing is discussed during consultation. All services use premium European products exclusively. Images will be sourced from Unsplash with specific search terms for each section: Hero: 'hair salon editorial bold', Interior: 'modern salon interior steel blue', Services: 'hair cut professional salon', Team: 'hairstylist portrait editorial', Culture/Art section: 'art gallery minimalist helsinki'. All images must be high quality 1200x800 minimum. Placeholder.com will be used as a fallback if Unsplash URLs are unreliable."
+    "philosophy": "Cultural hub for art, design, and fashion",
+    "targetAudience": "Fashion-forward, art-conscious clientele in Helsinki",
+    "additionalDetails": "Vidal Sassoon partnership emphasizes precision and technical excellence. Pricing is by consultation only; no public price lists. Imagery placeholder strategy provided for Unsplash integration with mandatory Next/Image optimization settings.",
+    "placeholderAssets": {
+      "hero": "/images/hero_v2.png",
+      "interior": "/images/interior.png",
+      "services": "/images/services.png",
+      "culture": "/images/interior.png",
+      "team": "/images/about.png",
+      "about": "/images/about.png",
+      "contact": "/images/contact.png",
+      "imageSpecs": {
+        "landscape": "1200x800",
+        "portrait": "800x1000",
+        "nextImageProp": "optimized"
+      }
+    }
   },
   "creativeStrategy": {
-    "layoutArchetype": "EDITORIAL SPLIT",
+    "layoutArchetype": "CULTURAL GALLERY + EDITORIAL SPLIT",
     "colorPalette": {
-      "primary": "#1A1A1A",
-      "secondary": "#E0E0E0",
-      "background": "#FFFFFF",
-      "text": "#333333",
-      "accent": "#B58B5E"
+      "primary": "#000000",
+      "secondary": "#FFFFFF",
+      "background": "#F4F4F4",
+      "text": "#1A1A1A",
+      "accent": "#FF3366"
     },
     "typography": {
-      "display": "A bold, contemporary serif font (e.g., Playfair Display or Cormorant Garamond) for headings and the salon name.",
-      "body": "A clean, highly readable sans-serif font (e.g., Open Sans or Lato) for body text."
+      "display": "High-contrast Didone (e.g., Bodoni or Playfair Display)",
+      "body": "Clean neo-grotesque sans-serif (e.g., Inter or Neue Haas Grotesk)"
     },
     "animationStyle": [
-      "Pinned split storytelling",
-      "Staggered line text reveals"
+      "Staggered line text reveals",
+      "Velocity skew on scroll",
+      "Circle mask reveals for team/services"
     ],
     "sectionOrder": [
-      "Hero - Introduction of BOB Hair Helsinki, showcasing the revolutionary aspect and founder vision.",
-      "About Us - Pinned split storytelling detailing Kristel Tamm and Saara Vuorela's journey and the salon's philosophy as a cultural hub.",
-      "Services - Editorial split layout with high-quality imagery of signature bob cuts, modern haircuts, and makeup, with staggered line text reveals for descriptions.",
-      "Gallery/Portfolio - Full-bleed immersive sections showcasing styled hair and makeup, interspliced with images representing art, design, and fashion.",
-      "Location/Contact - Clear display of Kamppi Helsinki location, booking URL, Instagram handle, and email.",
-      "Vidal Sassoon Partnership - A dedicated section highlighting this credential."
+      "Hero (Massive typography + blurred abstract hair textures)",
+      "Philosophy (Editorial text block on left, founder portrait on right)",
+      "Services (Horizontal scroll gallery)",
+      "Gallery (Asymmetric art-grid of haircuts)",
+      "Footer (Booking CTA + Contact)"
     ],
-    "mood": "Sophisticated, artistic, modern, and slightly avant-garde, reflecting a premium salon experience with a strong connection to art and fashion.",
-    "designRationale": "The Editorial Split layout is chosen to echo the fashion-magazine aesthetic, perfectly aligning with the 'art, design, and fashion' cultural hub philosophy. This allows for powerful visual storytelling with large, impactful imagery juxtaposed against concise, sophisticated typography. The Pinned Split Storytelling will be used for the founders' narrative to create an immersive and personal connection. Staggered line text reveals will add an editorial flair to service descriptions. The color palette balances a premium, dark feel with crisp whites and a warm, inviting accent that hints at creative warmth. Typography will be a key element in conveying sophistication and artistic sensibility."
+    "mood": "Sophisticated, avant-garde, professional yet effortlessly cool",
+    "designRationale": "By blending a gallery-style layout with editorial structure, the site positions BOB not just as a salon, but as a lifestyle brand. The high-contrast typography honors the Vidal Sassoon heritage, while the velocity scroll and mask reveals add a modern, tech-forward 'revolutionary' edge."
   },
   "pages": [
     "index",
