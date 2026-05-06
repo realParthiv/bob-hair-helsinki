@@ -65,7 +65,7 @@ export default function Page() {
 
         <motion.div style={{ y }} className="absolute inset-0 -z-0 opacity-40">
           <Image 
-            src="/images/hero_v2.png" 
+            src="/bob-hair-helsinki/images/hero_v2.png" 
             alt="Cinematic editorial hair salon" 
             fill 
             className="object-cover brightness-75 scale-105"
@@ -113,7 +113,7 @@ export default function Page() {
         >
           <motion.div style={{ scale: 1.2, y: useTransform(scrollYProgress, [0.3, 0.7], ['-10%', '10%']) }} className="absolute inset-0">
             <Image 
-              src="/images/interior.png" 
+              src="/bob-hair-helsinki/images/interior.png" 
               alt="Minimal Nordic Interior" 
               fill
               className="object-cover"

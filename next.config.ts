@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
-  basePath: '/bob-hair-helsinki', // Replace with your repository name if different
+  basePath: '/bob-hair-helsinki',
+  assetPrefix: '/bob-hair-helsinki/',
 }
 
 export default nextConfig

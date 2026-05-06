@@ -32,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bodyFont.variable} ${displayFont.variable}`}>
       <head>
+        <link rel="icon" href="/bob-hair-helsinki/favicon.ico" />
         <script src="https://web3forms.com/client/script.js" async defer></script>
       </head>
       <body className="antialiased bg-[#F4F4F4] text-[#1A1A1A]">

@@ -90,7 +90,7 @@ export default function ContactPage() {
       <section className="relative h-[80vh] flex flex-col justify-end p-8 md:p-24 overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <Image 
-            src="/images/contact.png" 
+            src="/bob-hair-helsinki/images/contact.png" 
             alt="Editorial salon" 
             fill 
             className="object-cover"

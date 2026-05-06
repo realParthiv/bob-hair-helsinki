@@ -133,7 +133,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div variants={variants}>
               <Image 
-                src="/images/about.png" 
+                src="/bob-hair-helsinki/images/about.png" 
                 alt="BOB Hair Helsinki Interior" 
                 width={1200} 
                 height={800} 
@@ -309,7 +309,7 @@ export default function AboutPage() {
             </div>
           </motion.div>
           <motion.div variants={variants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-            <Image src="/images/services.png" alt="Sassoon Heritage" fill className="object-cover" />
+            <Image src="/bob-hair-helsinki/images/services.png" alt="Sassoon Heritage" fill className="object-cover" />
           </motion.div>
         </div>
       </section>
