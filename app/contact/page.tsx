@@ -104,7 +104,7 @@ export default function ContactPage() {
           animate="visible" 
           className="relative z-10 max-w-4xl"
         >
-          <motion.h1 className="text-[clamp(3rem,8vw,8rem)] leading-[0.9] font-bold text-white tracking-tighter">
+          <motion.h1 className="text-[clamp(3.5rem,15vw,8rem)] leading-[0.85] font-bold text-white tracking-tighter">
             {chars.map((char, i) => (
               <motion.span key={i} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
                 {char}
@@ -196,18 +196,18 @@ export default function ContactPage() {
         </motion.form>
       </section>
 
-      <section className="py-24 px-8 md:px-24 bg-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-16">
+      <section className="py-24 md:py-32 px-6 md:px-24 bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           <motion.div variants={variants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h4 className="text-xl font-bold uppercase mb-6 tracking-widest text-[#FF3366]">Booking Policy</h4>
+            <h4 className="text-lg md:text-xl font-bold uppercase mb-6 tracking-widest text-[#FF3366]">Booking Policy</h4>
             <p className="text-lg opacity-70 leading-relaxed">We operate on a consultation-first basis to ensure technical accuracy. Please notify us 24 hours in advance for cancellations to avoid a fee.</p>
           </motion.div>
           <motion.div variants={variants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h4 className="text-xl font-bold uppercase mb-6 tracking-widest text-[#FF3366]">Arrival</h4>
+            <h4 className="text-lg md:text-xl font-bold uppercase mb-6 tracking-widest text-[#FF3366]">Arrival</h4>
             <p className="text-lg opacity-70 leading-relaxed">We recommend arriving 10 minutes prior to your appointment to enjoy our current art exhibition and a complimentary beverage.</p>
           </motion.div>
           <motion.div variants={variants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h4 className="text-xl font-bold uppercase mb-6 tracking-widest text-[#FF3366]">Location</h4>
+            <h4 className="text-lg md:text-xl font-bold uppercase mb-6 tracking-widest text-[#FF3366]">Location</h4>
             <p className="text-lg opacity-70 leading-relaxed">Conveniently located in Kamppi, just a 5-minute walk from the central station. Public transit and parking are readily available nearby.</p>
           </motion.div>
         </div>
@@ -215,7 +215,7 @@ export default function ContactPage() {
 
       <section className="py-12 border-t border-[#E0E0E0] text-center overflow-hidden">
         <motion.div 
-          className="text-[10rem] font-black uppercase text-[#1A1A1A]/10 whitespace-nowrap"
+          className="text-[5rem] md:text-[10rem] font-black uppercase text-[#1A1A1A]/10 whitespace-nowrap"
           animate={{ x: ['0%', '-50%'] }} 
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
         >

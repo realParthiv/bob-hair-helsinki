@@ -40,26 +40,27 @@ export default function Page() {
     <main className="bg-[#F4F4F4] text-[#1A1A1A] overflow-hidden">
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col justify-center px-6 md:px-16">
-        <motion.div initial="hidden" animate="visible" variants={container} className="z-10">
-          <motion.h1 className="text-[clamp(4rem,12vw,10rem)] font-bold leading-[0.9] tracking-tighter">
-            {title.map((char, i) => (
-              <motion.span key={i} variants={variants} className="inline-block">{char}</motion.span>
-            ))}
-          </motion.h1>
-          <motion.p variants={variants} className="text-2xl mt-8 max-w-lg italic text-[#FF3366]">
-            A revolutionary Helsinki hair salon where technical precision meets avant-garde creative expression. Vidal Sassoon partner salon.
+        <motion.div initial="hidden" animate="visible" variants={container} className="z-10 max-w-5xl">
+          <motion.p variants={variants} className="text-[#FF3366] uppercase tracking-[0.4em] mb-6 font-bold text-sm">
+            Tove Jansson (Tuutikki, Taikatalvi)
           </motion.p>
-          <motion.div variants={variants} className="mt-12">
-            <motion.a
-              href="https://varaa.timma.fi/bobhairhelsinki"
-              className="inline-block bg-[#000000] text-[#F4F4F4] px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm"
-              {...MAGNETIC_BUTTON_PROPS}
-              style={{ x, y: yPos }}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={() => { x.set(0); yPos.set(0) }}
-            >
-              Book Consultation
-            </motion.a>
+          <motion.h1 className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[1.1] tracking-tighter mb-8">
+            ”KAIKKI ON HYVIN EPÄVARMAA, JA JUURI SE TEKEE MINUT LEVOLLISEKSI”
+          </motion.h1>
+          <motion.div variants={variants} className="flex flex-col md:flex-row gap-12 mt-12">
+            <div className="flex-1 space-y-6 text-lg opacity-80 leading-relaxed">
+              <p>BOB, the haircut, first appeared in the frisky 1920s. It started a revolution in women's hair fashion, establishing itself as the hairstyle of the brave and rebellious. BOB is also the most renowned haircut of our role model and source of eternal inspiration, Vidal Sassoon.</p>
+              <p>For that reason, BOB is also the perfect name for our hair salon, a dream shared by two women who happen to have a BOB haircut.</p>
+            </div>
+            <div className="flex-1 flex items-center">
+              <motion.a 
+                href="https://varaa.timma.fi/bobhairhelsinki"
+                className="inline-block bg-[#000000] text-[#F4F4F4] px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform"
+                {...MAGNETIC_BUTTON_PROPS}
+              >
+                Book Appointment
+              </motion.a>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -94,15 +95,12 @@ export default function Page() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ margin: "-100px" }}
         >
-          <h2 className="text-6xl font-bold mb-8 tracking-tighter uppercase leading-[0.9]">A Cultural Hub for<br/>Art & Design</h2>
-          <p className="text-xl leading-relaxed mb-6 font-light">
-            Founded by industry visionaries Kristel Tamm and Saara Vuorela in the heart of Kamppi, Helsinki. 
-            We bridge the gap between technical mastery and high-fashion creative expression.
-          </p>
-          <div className="h-px w-full bg-black/10 my-8" />
-          <p className="text-lg opacity-60 leading-relaxed italic">
-            As a Vidal Sassoon partner salon, our philosophy is rooted in the architecture of hair. We believe in cuts that move, styles that breathe, and a collaborative process that treats every client as a canvas for modern art.
-          </p>
+          <h3 className="text-sm uppercase tracking-[0.3em] text-[#FF3366] mb-8">Our Philosophy</h3>
+          <h2 className="text-5xl font-bold mb-8 tracking-tighter uppercase leading-tight">Simple but Sophisticated</h2>
+          <div className="space-y-6 text-xl leading-relaxed font-light italic">
+            <p>BOB´s heart beats for freedom, clarity and rebellion with professionalism and love. Our philosophy at BOB is; simple but sophisticated and easy to maintain hair that is tailored specifically for you and your lifestyle.</p>
+            <p className="not-italic opacity-60">“If you don ́t look good, we don ́t look good.” — Vidal Sassoon</p>
+          </div>
         </motion.div>
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -126,11 +124,11 @@ export default function Page() {
       <section className="py-32 px-6 md:px-16 bg-[#000000] text-[#F4F4F4]">
         <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <motion.h3 variants={variants} className="text-sm uppercase tracking-[0.2em] mb-16 text-[#FF3366]">Our Expertise</motion.h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {["signature bob cuts", "modern haircuts", "makeup", "balayage", "keratin", "bridal styling"].map((service, i) => (
-              <motion.div key={i} variants={variants} className="p-12 border border-[#333] hover:border-[#FF3366] transition-all hover:bg-[#111] group rounded-xl">
+              <motion.div key={i} variants={variants} className="p-8 md:p-12 border border-[#333] hover:border-[#FF3366] transition-all hover:bg-[#111] group rounded-xl">
                 <Scissors className="mb-6 text-[#FF3366] group-hover:scale-110 transition-transform" />
-                <h4 className="text-2xl font-bold uppercase mb-4">{service}</h4>
+                <h4 className="text-xl md:text-2xl font-bold uppercase mb-4 leading-tight">{service}</h4>
                 <p className="text-sm opacity-50 leading-relaxed">Precision-engineered techniques tailored to your unique bone structure and aesthetic identity.</p>
               </motion.div>
             ))}
@@ -139,8 +137,8 @@ export default function Page() {
       </section>
 
       {/* Process Section */}
-      <section className="py-32 px-6 md:px-16 border-b border-black/5">
-        <div className="grid md:grid-cols-3 gap-16">
+      <section className="py-24 md:py-32 px-6 md:px-16 border-b border-black/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           {[
             { step: "01", title: "Consultation", desc: "A deep dive into your lifestyle, hair history, and aesthetic goals. We treat every head of hair as a unique architectural project." },
             { step: "02", title: "Engineering", desc: "Applying Vidal Sassoon inspired geometry to create cuts that move naturally and maintain their shape as they grow." },
@@ -159,9 +157,10 @@ export default function Page() {
       <footer className="py-20 px-6 md:px-16 bg-[#F4F4F4]">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12">
           <div>
-            <h5 className="font-bold text-2xl mb-4">BOB Hair Helsinki</h5>
-            <p className="flex items-center gap-2 mb-2"><MapPin size={18} /> Kamppi, Helsinki, Finland</p>
-            <p className="flex items-center gap-2"><Mail size={18} /> bob@bobhairhelsinki.com</p>
+            <h5 className="font-bold text-2xl mb-4 uppercase tracking-tighter">BOB Hair Helsinki</h5>
+            <p className="flex items-center gap-2 mb-2"><MapPin size={18} /> Fredrikinkatu 20, 00120 Helsinki</p>
+            <p className="flex items-center gap-2 mb-2"><Mail size={18} /> bob@bobhairhelsinki.com</p>
+            <p className="font-bold mt-4 text-[#FF3366] tracking-widest text-sm">+358-44-9825198</p>
           </div>
           <div className="flex flex-col gap-4">
             <a href="https://www.instagram.com/bobhairhelsinki" className="flex items-center gap-2 text-xl font-medium">

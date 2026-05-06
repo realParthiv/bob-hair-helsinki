@@ -45,7 +45,7 @@ export default function Footer() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
-  const footerLinks = ["about", "services", "contact", "privacy"];
+  const footerLinks = ["about", "services", "join-us", "contact", "privacy"];
 
   return (
     <motion.footer 
@@ -64,9 +64,9 @@ export default function Footer() {
             <motion.div variants={variants} className="md:col-span-4">
               <h2 className="text-4xl md:text-6xl font-bold mb-6">BOB<br />Hair Helsinki</h2>
               <p className="text-[#999] max-w-sm mb-8 leading-relaxed">
-                Revolutionary Helsinki hair salon acting as a cultural hub for art, design, and fashion. Precision and technical excellence inspired by Vidal Sassoon.
+                The hair salon of the brave and rebellious. A warm and tolerant oasis where simple but sophisticated hair is tailored specifically for you.
               </p>
-              <MagneticButton href="https://varaa.timma.fi/bobhairhel，inki">
+              <MagneticButton href="https://varaa.timma.fi/bobhairhelsinki">
                 Book Appointment <ArrowUpRight size={16} />
               </MagneticButton>
             </motion.div>
@@ -89,7 +89,7 @@ export default function Footer() {
               <div className="space-y-6">
                 <div className="flex items-center gap-3 text-[#999]">
                   <MapPin size={20} />
-                  <span>Kamppi, Helsinki, Finland</span>
+                  <span>Fredrikinkatu 20, 00120 Helsinki</span>
                 </div>
                 <div className="flex items-center gap-3 text-[#999]">
                   <Mail size={20} />
@@ -118,11 +118,11 @@ export default function Footer() {
         </motion.div>
       </div>
 
-      <div className="mt-24 overflow-hidden whitespace-nowrap">
+      <div className="mt-12 md:mt-24 overflow-hidden whitespace-nowrap pb-8">
         <motion.div 
           animate={{ x: ['0%', '-50%'] }} 
           transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-          className="flex gap-16 text-[10vw] font-bold text-[#F4F4F4] uppercase opacity-20"
+          className="flex gap-16 text-[15vw] md:text-[10vw] font-bold text-[#F4F4F4] uppercase opacity-[0.03] pointer-events-none"
         >
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i}>Revolutionary Cuts • Precision Design • Nordic Aesthetic • </span>

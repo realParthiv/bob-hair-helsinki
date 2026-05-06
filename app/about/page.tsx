@@ -114,20 +114,11 @@ export default function AboutPage() {
     <main className="bg-[#F4F4F4] min-h-screen text-[#1A1A1A]">
       <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto overflow-hidden">
         <motion.div variants={container} initial="hidden" animate="visible">
-          <motion.h1 className="text-[clamp(2.5rem,8vw,7rem)] leading-[1.1] font-bold mb-12 flex flex-wrap gap-x-[0.3em]">
-            {"REVOLUTIONARY HELSINKI HAIR SALON".split(" ").map((word, wordIdx) => (
-              <span key={wordIdx} className="whitespace-nowrap inline-block">
-                {word.split("").map((char, charIdx) => (
-                  <motion.span 
-                    key={charIdx} 
-                    variants={charVariants} 
-                    className="inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </span>
-            ))}
+          <motion.p variants={variants} className="text-[#FF3366] uppercase tracking-[0.4em] mb-6 font-bold text-sm">
+            Eleanor Roosevelt
+          </motion.p>
+          <motion.h1 className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[1.1] tracking-tighter mb-12">
+            ”THE FUTURE BELONGS TO THOSE WHO BELIEVE IN THE BEAUTY OF THEIR DREAMS.”
           </motion.h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -158,15 +149,15 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className="py-32 px-6 max-w-7xl mx-auto border-t border-black/5">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-20 gap-8">
           <div className="max-w-2xl">
             <h3 className="text-sm uppercase tracking-[0.3em] text-[#FF3366] mb-6">Our Team</h3>
-            <h4 className="text-6xl font-bold uppercase tracking-tighter leading-none">The <br/>Artists</h4>
+            <h4 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-none">The <br className="hidden md:block"/>Artists</h4>
           </div>
           <p className="max-w-md text-lg opacity-60 italic">Diverse technical sense of style, united by precision and a shared creative vision.</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {teamMembers.map((member, i) => (
             <motion.div 
               key={member.name}
@@ -177,7 +168,7 @@ export default function AboutPage() {
               onClick={() => setSelectedMember(member)}
               className="group cursor-pointer"
             >
-              <div className="relative h-[500px] overflow-hidden rounded-2xl mb-6">
+              <div className="relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl mb-6">
                 <Image 
                   src={member.image} 
                   alt={member.name} 
@@ -186,8 +177,8 @@ export default function AboutPage() {
                   unoptimized
                 />
               </div>
-              <h5 className="text-2xl font-bold uppercase tracking-tight">{member.name}</h5>
-              <p className="text-[#FF3366] uppercase text-xs tracking-widest font-bold mt-2">{member.role}</p>
+              <h5 className="text-xl md:text-2xl font-bold uppercase tracking-tight">{member.name}</h5>
+              <p className="text-[#FF3366] uppercase text-[10px] md:text-xs tracking-widest font-bold mt-2">{member.role}</p>
             </motion.div>
           ))}
         </div>
@@ -240,8 +231,8 @@ export default function AboutPage() {
                       className="space-y-12"
                     >
                       <div>
-                        <h3 className="text-sm uppercase tracking-[0.4em] text-[#FF3366] font-bold mb-4">{selectedMember.role}</h3>
-                        <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-8">{selectedMember.name}</h2>
+                        <h3 className="text-xs uppercase tracking-[0.4em] text-[#FF3366] font-bold mb-4">{selectedMember.role}</h3>
+                        <h2 className="text-4xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-8">{selectedMember.name}</h2>
                         <div className="h-1 w-20 bg-[#FF3366]" />
                       </div>
                       
@@ -337,7 +328,7 @@ export default function AboutPage() {
         <motion.div 
           animate={{ x: ['0%', '-50%'] }} 
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="flex gap-8 text-8xl font-black uppercase"
+          className="flex gap-8 text-5xl md:text-8xl font-black uppercase"
         >
           {Array(4).fill("Vidal Sassoon Partner Salon • ").map((text, i) => <span key={i}>{text}</span>)}
         </motion.div>

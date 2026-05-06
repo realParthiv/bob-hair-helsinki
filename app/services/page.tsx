@@ -60,8 +60,8 @@ export default function ServicesPage() {
         </motion.div>
         
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="relative z-10 text-center space-y-8 px-6 mt-12">
-          <motion.h1 variants={itemVariants} className="text-[clamp(4rem,15vw,10rem)] leading-[0.8] font-black uppercase tracking-tighter">
-            Curation <br /> & Craft
+          <motion.h1 variants={itemVariants} className="text-[clamp(3.5rem,15vw,10rem)] font-black uppercase leading-[0.85] tracking-tighter mb-8">
+            Expertise & <br className="hidden md:block"/>Precision
           </motion.h1>
           <motion.div variants={itemVariants} className="max-w-2xl mx-auto space-y-6">
             <p className="text-2xl font-light leading-relaxed">
@@ -76,30 +76,46 @@ export default function ServicesPage() {
         </motion.div>
       </section>
 
-      <section ref={scrollRef} className="relative py-20 px-6">
-        <motion.div style={{ y }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {servicesList.map((service, index) => (
-            <motion.div 
-              key={index}
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              whileHover={{ y: -10 }}
-              className="group relative overflow-hidden bg-white p-12 border border-black/5 transition-all hover:border-[#FF3366] hover:shadow-[0_20px_50px_rgba(255,51,102,0.1)] rounded-3xl"
-            >
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 group-hover:scale-150 transition-all duration-500">
-                <Scissors size={120} />
-              </div>
-              <Scissors className="mb-8 text-[#FF3366] transition-transform group-hover:rotate-12" />
-              <h3 className="text-3xl font-black uppercase mb-6 leading-none tracking-tighter">{service.title}</h3>
-              <p className="opacity-60 leading-relaxed text-lg font-light">{service.desc}</p>
-              <div className="mt-8 flex items-center gap-2 text-[#FF3366] font-bold text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                Book <ArrowRight size={16} />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+      <section className="py-24 md:py-32 px-6 bg-white border-y border-black/5">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <h3 className="text-sm uppercase tracking-[0.3em] text-[#FF3366] mb-4">Investment</h3>
+              <h4 className="text-5xl font-bold uppercase tracking-tighter leading-none">Services & Pricing</h4>
+            </div>
+            <p className="text-sm opacity-50 italic">Prices include VAT of 25.5%</p>
+          </div>
+          
+          <div className="space-y-6">
+            {[
+              { name: "Haircut", price: "85-130 €" },
+              { name: "Colour", price: "165 €" },
+              { name: "Cut and Colour", price: "195 €" },
+              { name: "Highlights and Multicolour", price: "235 €" },
+              { name: "Highlight/Multicolour and Cut", price: "235 €" },
+              { name: "Bleach", price: "220 €" },
+              { name: "Blow-dry / Straightening", price: "88 €" },
+              { name: "Hairdo", price: "155 €" },
+              { name: "Hair Treatments", price: "105 €" },
+              { name: "Make Up", price: "140 €" }
+            ].map((service, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className="flex justify-between items-end border-b border-black/5 pb-4 group hover:border-[#FF3366] transition-colors"
+              >
+                <div className="text-xl uppercase font-bold tracking-tight group-hover:text-[#FF3366] transition-colors">{service.name}</div>
+                <div className="flex-1 border-b border-dotted border-black/10 mx-4 mb-2" />
+                <div className="text-lg font-light opacity-60">From {service.price}</div>
+              </motion.div>
+            ))}
+          </div>
+          <p className="mt-12 text-xs opacity-40 leading-relaxed">
+            Note! For times that are not cancelled or that are cancelled the same day, we charge 75% of the price.
+          </p>
+        </div>
       </section>
 
       <section className="py-32 px-6 flex flex-col items-center justify-center text-center">
@@ -138,8 +154,8 @@ export default function ServicesPage() {
           </div>
           <div className="space-y-12">
             <div className="space-y-4">
-              <h3 className="text-[#FF3366] uppercase tracking-[0.3em] text-sm">Specialized Craft</h3>
-              <h2 className="text-6xl font-bold tracking-tighter leading-none">The Sassoon <br/>Methodology</h2>
+              <h3 className="text-[#FF3366] uppercase tracking-[0.3em] text-xs md:text-sm">Specialized Craft</h3>
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-none">The Sassoon <br/>Methodology</h2>
             </div>
             <p className="text-xl opacity-80 leading-relaxed italic">
               "Hair design is an architectural project that complements the individual's unique bone structure."
